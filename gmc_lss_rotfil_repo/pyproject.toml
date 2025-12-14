@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gmc-lss"
+version = "0.1.0"
+description = "GMC-LSS: rotating filament + spin–filament alignment toolkit (paper-test scaffold)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "zolton + ChatGPT"}]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+astro = ["astropy>=6.0"]
+dev = ["pytest>=8.0", "ruff>=0.5", "mypy>=1.8"]
+
+[project.scripts]
+gmc-lss-synth = "gmc_lss.cli:synth_main"
+gmc-lss-run = "gmc_lss.cli:run_main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gmc_lss*"]
+
+[tool.ruff]
+line-length = 100
